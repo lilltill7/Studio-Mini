@@ -10,21 +10,102 @@
     <div id="app">
 
       <header>
-        <h1>Studio Mini</h1>
-        <button id="saveBtn">save idea</button>
+        <h1>studio mini</h1>
+        <button id="saveBtn" onclick="saveIdea()">save</button>
       </header>
 
-      <nav>
-        <button class="tab active" data-tab="audio">audio</button>
-        <button class="tab" data-tab="video">video</button>
-        <button class="tab" data-tab="lyrics">lyrics</button>
-      </nav>
+      <div class="dashboard">
 
-      <main>
-        <section id="audio" class="panel active"></section>
-        <section id="video" class="panel"></section>
-        <section id="lyrics" class="panel"></section>
-      </main>
+        <!-- LYRICS — left half -->
+        <div class="tile tile-lyrics" onclick="expand('lyrics')">
+          <div class="tile-label">lyrics</div>
+          <div class="tile-expand">⤢</div>
+          <div class="lyrics-preview" id="lyricsPreview">
+            <span class="preview-empty">tap to write...</span>
+          </div>
+        </div>
+
+        <!-- VIDEO — top right -->
+        <div class="tile tile-video" onclick="expand('video')">
+          <div class="tile-label">video</div>
+          <div class="tile-expand">⤢</div>
+          <div class="tile-icon">
+            <div class="cam-icon"></div>
+          </div>
+        </div>
+
+        <!-- AUDIO — bottom right -->
+        <div class="tile tile-audio" onclick="expand('audio')">
+          <div class="tile-label">audio</div>
+          <div class="tile-expand">⤢</div>
+          <div class="tile-icon">
+            <div class="mic-ring">
+              <div class="mic-dot" id="dashMicDot"></div>
+            </div>
+          </div>
+          <div class="tile-count" id="dashAudioCount"></div>
+        </div>
+
+      </div>
+
+      <!-- FULLSCREEN PANELS -->
+      <div class="fullscreen hidden" id="fs-lyrics">
+        <div class="fs-header">
+          <span class="fs-title">lyrics</span>
+          <button class="close-btn" onclick="collapse()">✕</button>
+        </div>
+        <div class="tag-row">
+          <button class="tag active" onclick="insertTag(this,'verse')">verse</button>
+          <button class="tag" onclick="insertTag(this,'chorus')">chorus</button>
+          <button class="tag" onclick="insertTag(this,'bridge')">bridge</button>
+          <button class="tag" onclick="insertTag(this,'outro')">outro</button>
+        </div>
+        <textarea id="lyricsBox" placeholder="start writing..."></textarea>
+        <div class="fs-footer">
+          <span id="wordCount" class="label">0 words</span>
+          <button class="small-btn" onclick="clearLyrics()">clear</button>
+        </div>
+      </div>
+
+      <div class="fullscreen hidden" id="fs-video">
+        <div class="fs-header">
+          <span class="fs-title">video</span>
+          <button class="close-btn" onclick="collapse()">✕</button>
+        </div>
+        <div class="video-wrap">
+          <video id="videoEl" autoplay muted playsinline></video>
+          <div id="vidPlaceholder" class="vid-placeholder">camera off</div>
+          <div id="recIndicator" class="rec-indicator hidden">● rec</div>
+        </div>
+        <div class="btn-row">
+          <button class="action-btn" onclick="toggleCamera()" id="camBtn">start camera</button>
+          <button class="action-btn danger hidden" onclick="toggleVideoRec()" id="vidRecBtn">record</button>
+        </div>
+        <div class="clips-header">
+          <span class="label">clips</span>
+          <span class="label" id="vidCount">0 clips</span>
+        </div>
+        <div id="videoClips"><p class="empty">no clips yet</p></div>
+      </div>
+
+      <div class="fullscreen hidden" id="fs-audio">
+        <div class="fs-header">
+          <span class="fs-title">audio</span>
+          <button class="close-btn" onclick="collapse()">✕</button>
+        </div>
+        <div class="record-center">
+          <button id="audioBtn" class="big-btn" onclick="toggleAudio()">
+            <div class="btn-dot"></div>
+          </button>
+          <div id="audioTimer" class="timer">0:00</div>
+          <div id="audioStatus" class="status">tap to record</div>
+        </div>
+        <div class="clips-header">
+          <span class="label">recordings</span>
+          <span class="label" id="audioCount">0 clips</span>
+        </div>
+        <div id="audioClips"><p class="empty">no recordings yet</p></div>
+      </div>
 
     </div>
     <script src="app.js"></script>
