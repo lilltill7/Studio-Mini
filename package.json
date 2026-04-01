@@ -1,0 +1,21 @@
+{
+  "name": "studio-mini",
+  "version": "1.0.0",
+  "main": "app.js",
+ "scripts": {
+  "test": "echo \"Error: no test specified\" && exit 1",
+  "start": "npx live-server"
+},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lilltill7/Studio-Mini.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lilltill7/Studio-Mini/issues"
+  },
+  "homepage": "https://github.com/lilltill7/Studio-Mini#readme",
+  "description": ""
+}

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Studio Mini</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="app">
+
+      <header>
+        <h1>Studio Mini</h1>
+        <button id="saveBtn">save idea</button>
+      </header>
+
+      <nav>
+        <button class="tab active" data-tab="audio">audio</button>
+        <button class="tab" data-tab="video">video</button>
+        <button class="tab" data-tab="lyrics">lyrics</button>
+      </nav>
+
+      <main>
+        <section id="audio" class="panel active"></section>
+        <section id="video" class="panel"></section>
+        <section id="lyrics" class="panel"></section>
+      </main>
+
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>
